@@ -1,12 +1,10 @@
 # Exp.No:33  
+
 ## POSTFIX EVALUATION
 
----
-
 ### AIM  
-To write a Python program to evaluate a user-given Postfix expression that contains Multiplication and Addition operators using the stack concept.
 
----
+To write a Python program to evaluate a user-given Postfix expression that contains Multiplication and Addition operators using the stack concept.
 
 ### ALGORITHM
 
@@ -25,19 +23,37 @@ To write a Python program to evaluate a user-given Postfix expression that conta
 6. Take a postfix expression as input from the user.
 7. Print the postfix expression.
 8. Call the function `evaluate_postfix()` with the input and print the result.
-9. **End the program.**
-
----
-
+9. End the program.
+   
 ### PROGRAM
 
 ```
 
+OPERATORS=set(['*','+']) 
+def evaluate_postfix(expression):
+    stack=[]
+    for i in expression:
+        if i not in OPERATORS:
+            stack.append(i)
+        else :
+            a=stack.pop()
+            b=stack.pop()
+            if i=='+':
+                res=int(a)+int(b)
+            elif i=='*':
+                res=int(b)*int(a)
+            stack.append(res)
+    return stack[0]   
+expression = input()
+print("postfix expression: ",expression)
+print("Evaluation result: ",evaluate_postfix(expression))
 
 ```
 
 ### OUTPUT
 
+![image](https://github.com/user-attachments/assets/b1696fc9-5f26-4364-a5ea-654129ee79b9)
 
 ### RESULT
 
+The program evaluates the given postfix expression using stack operations and displays the final result.
